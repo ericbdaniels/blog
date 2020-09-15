@@ -1,1 +1,1 @@
-Sitemap: https://ericbdaniels.github.io/blog/sitemap.xml
+Sitemap: geostats.dev/sitemap.xml
