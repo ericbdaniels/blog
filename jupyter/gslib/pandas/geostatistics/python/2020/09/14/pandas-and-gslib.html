@@ -155,19 +155,24 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Though a bit dated GSLIB remains the standard in many Geostatistical workflows, unfortunately the GSLIB data format can be a bit of hassle.
-The standard GSLIB aka GEO-EAS data format is as follows:</p>
+The standard GSLIB aka GEO-EAS data format as described on <a href="http://www.gslib.com/gslib_help/format.html">gslib.com</a>:</p>
 
-<pre><code>GSLIB Example Data              # Title
-4                               # Number of columns (ncols in most GSLIB code)
-x                               # Column names, 1 row per column 0 to ncols
-y
-z
-var
-192.387 218.553 219.622 0.955  # Data starts after ncolumn names, each entry separated by whitespace
-214.301 247.053 54.814  0.359
-2.053   94.347  112.47  0.573
-219.282 256.152 51.515  1.091
-139.72  130.37  0.76    1.033</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>&lt;iframe
+  src="<a href="http://www.gslib.com/gslib_help/format.html">http://www.gslib.com/gslib_help/format.html</a>"
+  style="width:100%; height:300px;"</p>
+<blockquote><p>&lt;/iframe&gt;</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>The header is informative, but a little bit of a hassle when importing into a strictly tabular format like Pandas.
 It should be noted that line #2 in the header can often contain grid definition information in addition to ncols, and in the case of multiple simulations nsim is commonly given after the grid definition (this is overlooked in the read/write functions to follow).</p>
 <p>The goal here is just to provide a couple simple functions to save a little time for anyone who needs to do this.</p>
@@ -182,26 +187,6 @@ It should be noted that line #2 in the header can often contain grid definition 
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p><div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-</p>
-    </details>
-</div>
-    
-
     
     
 <div class="cell border-box-sizing code_cell rendered">
