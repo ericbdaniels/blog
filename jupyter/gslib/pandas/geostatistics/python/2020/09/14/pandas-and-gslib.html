@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -156,16 +156,12 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Though a bit dated GSLIB remains the standard in many Geostatistical workflows, unfortunately the GSLIB data format can be a bit of hassle.
 The standard GSLIB aka GEO-EAS data format as described on <a href="http://www.gslib.com/gslib_help/format.html">gslib.com</a>:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>&lt;iframe
-  src="<a href="http://www.gslib.com/gslib_help/format.html">http://www.gslib.com/gslib_help/format.html</a>"
-  style="width:100%; height:300px;"</p>
-<blockquote><p>&lt;/iframe&gt;</p>
+<blockquote><ul>
+<li>The first line in the file is taken as a title and is possibly transferred to output files.</li>
+<li>The second line should be a numerical value specifying the number of numerical variables nvar in the data file.</li>
+<li>The next nvar lines contain character identification labels and additional text (optional) that describe each variable.</li>
+<li>The following lines, from nvar+3 until the end of the file, are considered as data points and must have nvar numerical values per line. Missing values are typically considered as large negative or positive numbers (e.g., less than -1.0e21 or greater than 1.0e21). The number of data will be the number of lines in the file minus nvar+2 minus the number of missing values. The programs read numerical values and not alphanumeric characters; alphanumeric variables may be transformed to integers or the source code modified. </li>
+</ul>
 </blockquote>
 
 </div>
