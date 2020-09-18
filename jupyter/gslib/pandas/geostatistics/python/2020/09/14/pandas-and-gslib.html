@@ -169,7 +169,7 @@ The standard GSLIB aka GEO-EAS data format as described on <a href="http://www.g
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The header is informative, but a little bit of a hassle when importing into a strictly tabular format like Pandas.
+<p>The header is informative, but not convienent for importing into Pandas.
 It should be noted that line #2 in the header can often contain grid definition information in addition to ncols, and in the case of multiple simulations nsim is commonly given after the grid definition (this is overlooked in the read/write functions to follow).</p>
 <p>The goal here is just to provide a couple simple functions to save a little time for anyone who needs to do this.</p>
 <h2 id="Reading-GSLIB-data">Reading GSLIB data<a class="anchor-link" href="#Reading-GSLIB-data"> </a></h2><p>Importing GSLIB data really happens in 2 steps.</p>
