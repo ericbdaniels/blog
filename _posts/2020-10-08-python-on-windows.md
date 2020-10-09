@@ -1,5 +1,7 @@
 ---
 title: "Getting Started with Python on Windows"
+description: "Getting Python and Jupyter setup on Windows using Conda"
+layout: post
 categories: [Beginner, Python, Anaconda, Conda, Virtual Environments]
 ---
 

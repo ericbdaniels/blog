@@ -1,5 +1,7 @@
 ---
 title: "First Post"
+description: "A bit about me and why bother with a blog"
+layout: post
 categories: [Python, Geoscience, About Me]
 ---
 
