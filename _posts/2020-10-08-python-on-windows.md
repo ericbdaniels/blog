@@ -43,7 +43,7 @@ To get started either launch anaconda navigator from the start menu, or open a c
 
 
 
-## Virtual Environments with <img src="{{ site.baseurl }}/images/1280px-Conda_logo.svg.png" alt="image" style="zoom:10%;" />
+## Virtual Environments with <img src="{{ site.baseurl }}/images/1280px-Conda_logo.svg.png" alt="image" style="width:20%; display:inline" />
 
 A virtual environment can be thought of as an isolated install of python with a set of packages separate from the system (or user) -wide install. A virtual environment provides the freedom to work on projects that require a different version of python, or necessitate package(s) of different versions despite the latest and greatest that was installed with the Anaconda download. Additionally, a virtual environment can be replicated in another location or on another machine ensuring the ability to run your code wherever its needed.
 
