@@ -1,3 +1,10 @@
+```
+---
+title: "Getting Started with Python on Windows"
+categories: [Beginner, Python, Anaconda, Conda, Virtual Environments]
+---
+```
+
 # Getting Started with Python on Windows
 
 Reading python how-to guides, blogs and even tweets often gives the illusion that all things python take place entirely on Linux and Mac OS.  I'm on windows 99% of the time when using python and happy to report it works great. There is a bit of a lingering stigma regarding python on windows because there was a time when getting python installed and setup on a windows machine was a quite a hassle. Those days are over. In fact, there are more windows users than mac users according to the [JetBrains](https://www.jetbrains.com/2019) survey of 24k python users:
