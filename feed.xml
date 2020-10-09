@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="geostats.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="geostats.dev/" rel="alternate" type="text/html" /><updated>2020-10-08T21:10:00-05:00</updated><id>geostats.dev/feed.xml</id><title type="html">geostats.dev</title><subtitle>Python code snippets, thoughts on Geostatistics and lessons learned the hard way.</subtitle><entry><title type="html">Pandas DataFrames with a GSLIB I/O Methods</title><link href="geostats.dev/python/jupyter/pandas/gslib/oop/2020/09/17/extending-pandas.html" rel="alternate" type="text/html" title="Pandas DataFrames with a GSLIB I/O Methods" /><published>2020-09-17T00:00:00-05:00</published><updated>2020-09-17T00:00:00-05:00</updated><id>geostats.dev/python/jupyter/pandas/gslib/oop/2020/09/17/extending-pandas</id><content type="html" xml:base="geostats.dev/python/jupyter/pandas/gslib/oop/2020/09/17/extending-pandas.html">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="geostats.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="geostats.dev/" rel="alternate" type="text/html" /><updated>2020-10-08T21:17:32-05:00</updated><id>geostats.dev/feed.xml</id><title type="html">geostats.dev</title><subtitle>Python code snippets, thoughts on Geostatistics and lessons learned the hard way.</subtitle><entry><title type="html">Python On Windows</title><link href="geostats.dev/2020/10/08/python-on-windows.html" rel="alternate" type="text/html" title="Python On Windows" /><published>2020-10-08T00:00:00-05:00</published><updated>2020-10-08T00:00:00-05:00</updated><id>geostats.dev/2020/10/08/python-on-windows</id><content type="html" xml:base="geostats.dev/2020/10/08/python-on-windows.html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: &quot;Getting Started with Python on Windows&quot;
+categories: [Beginner, Python, Anaconda, Conda, Virtual Environments]
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;getting-started-with-python-on-windows&quot;&gt;Getting Started with Python on Windows&lt;/h1&gt;
+
+&lt;p&gt;Reading python how-to guides, blogs and even tweets often gives the illusion that all things python take place entirely on Linux and Mac OS.  I’m on windows 99% of the time when using python and happy to report it works great. There is a bit of a lingering stigma regarding python on windows because there was a time when getting python installed and setup on a windows machine was a quite a hassle. Those days are over. In fact, there are more windows users than mac users according to the &lt;a href=&quot;https://www.jetbrains.com/2019&quot;&gt;JetBrains&lt;/a&gt; survey of 24k python users:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images\python_platform.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Good news, that is absolutely no longer the case. However, I do think getting started with Python on windows can be a bit confusing. The goal of this post is to give a brief, but opinionated summary of how to go from never having touched python to running code in a jupyter notebook ASAP.&lt;/p&gt;
+
+&lt;h2 id=&quot;where-to-get-python&quot;&gt;Where to get Python&lt;/h2&gt;
+
+&lt;p&gt;Google something along the lines of “install python windows” and you’ll get python.org, closely followed by realpython.com and then a Microsoft page suggesting a python download from the Microsoft Appstore. Instead of these options, seek out &lt;a href=&quot;https://www.anaconda.com/products/individual&quot;&gt;Anaconda&lt;/a&gt;. This is a cross-platform solution to getting python installed and running with ease.&lt;/p&gt;
+
+&lt;p&gt;The Anaconda distribution includes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The latest version of python (create an environment for other versions needed - more on that to come)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.conda.io/projects/conda/en/latest/index.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda&lt;/code&gt; command line tool&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.anaconda.com/anaconda/packages/py3.8_win-64/&quot;&gt;A substantial set of pre-installed packages&lt;/a&gt; (particularly useful for scientific computing or data science)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.anaconda.com/anaconda/navigator/&quot;&gt;Anaconda Navigator&lt;/a&gt; (for those that prefer a GUI to launch python based tools)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: that if you desire a lighter weight version of Anaconda without the pre-installed packages consider &lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;miniconda&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;starting-jupyter&quot;&gt;Starting Jupyter&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jupyter.org/&quot;&gt;Jupyter Notebooks and Jupyter Lab&lt;/a&gt; are an approachable way to get started writing some code for beginners, as well as a fantastic way to combine data visualization with text and blocks of code for more experienced users.&lt;/p&gt;
+
+&lt;p&gt;To get started either launch anaconda navigator from the start menu, or open a command line terminal, navigate to your working directory and open by either &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jupyter notebook&lt;/code&gt;or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jupyter lab&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For some the command line terminal is unfamiliar or intimidating - instead jupyter notebook or lab can be launched from the file explorer with the same command (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;juptyer notebook&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jupter lab&lt;/code&gt;) entered in the address bar:&lt;/p&gt;
+
+  &lt;p&gt;&lt;img src=&quot;images\explorer.png&quot; alt=&quot;image&quot; style=&quot;zoom:50%;&quot; /&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;virtual-environments-with-&quot;&gt;Virtual Environments with &lt;img src=&quot;C:\code-dev\geostats.dev\WIP\md\images\1280px-Conda_logo.svg.png&quot; alt=&quot;image&quot; style=&quot;zoom:10%;&quot; /&gt;&lt;/h2&gt;
+
+&lt;p&gt;A virtual environment can be thought of as an isolated install of python with a set of packages separate from the system (or user) -wide install. A virtual environment provides the freedom to work on projects that require a different version of python, or necessitate package(s) of different versions despite the latest and greatest that was installed with the Anaconda download. Additionally, a virtual environment can be replicated in another location or on another machine ensuring the ability to run your code wherever its needed.&lt;/p&gt;
+
+&lt;h3 id=&quot;environment-setup&quot;&gt;Environment Setup&lt;/h3&gt;
+
+&lt;p&gt;Creating a new environment is simple&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda env create -n mynewenv&lt;/code&gt; (replacing mynewenv with a more appropriate name).&lt;/p&gt;
+
+&lt;p&gt;Anytime you want to use this environment, activate it&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda activate mynewenv&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once activated, anytime you call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; or it will call the version specific to that environment, isolated from the global install.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Using Jupyter (Notebook or Lab) within a Conda Environment requires an extra step.&lt;/p&gt;
+
+  &lt;p&gt;If you want to use your conda environment in a jupyter notebook :&lt;/p&gt;
+
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda install ipykernel nb_conda_kernels&lt;/code&gt;&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;ipykernel&lt;/strong&gt; provides everything you need to run jupyter from your new environment&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;nb_conda_kernels&lt;/strong&gt; provides the added bonus of being able to access other conda environments on your system from within jupyter&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;copying-an-environment&quot;&gt;Copying an Environment&lt;/h3&gt;
+
+&lt;p&gt;Ultimately,  you’ll want to share your code with a friend or colleague to replicate some python workflow on a new machine or new data elsewhere. Using a Virtual Environment makes this easy. To replicate an environment, simply record all packages being used and their version number.  To clone an environment on the same machine:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda create --name myenvclone --clone myoldenv&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Conda also provides a convenient way to export all the pertinent information to a YAML file. From within the environment you’d like to copy:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda env export &amp;gt; environment.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, take this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;environment.yml&lt;/code&gt; and recreate that exact same environment on a different machine:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda env create -f environment.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The YAML approach for saving environment information does not replace the standard &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; that is common with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip&lt;/code&gt;. Instead, the conda approach is best suited for exactly the process described above: cloning an environment. Same name, all the same packages etc. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; is best suited for a list dependencies required for some package, stopping short of creating an entire environment.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;Python works great on windows, don’t let anyone tell you otherwise. If you’re working on windows, especially in the realm of scientific computer or data science, Anaconda is highly recommended. Once you’ve got Anaconda set up and are comfortable with the basics, consider working a virtual environment for most things you’re doing. Does absolutely every bit of code need its own environment, definitely not but for any substantial project its highly recommended.&lt;/p&gt;</content><author><name></name></author><summary type="html">--- title: &quot;Getting Started with Python on Windows&quot; categories: [Beginner, Python, Anaconda, Conda, Virtual Environments] ---</summary></entry><entry><title type="html">Pandas DataFrames with a GSLIB I/O Methods</title><link href="geostats.dev/python/jupyter/pandas/gslib/oop/2020/09/17/extending-pandas.html" rel="alternate" type="text/html" title="Pandas DataFrames with a GSLIB I/O Methods" /><published>2020-09-17T00:00:00-05:00</published><updated>2020-09-17T00:00:00-05:00</updated><id>geostats.dev/python/jupyter/pandas/gslib/oop/2020/09/17/extending-pandas</id><content type="html" xml:base="geostats.dev/python/jupyter/pandas/gslib/oop/2020/09/17/extending-pandas.html">&lt;!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################

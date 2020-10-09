@@ -1,0 +1,94 @@
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: "Getting Started with Python on Windows"
+categories: [Beginner, Python, Anaconda, Conda, Virtual Environments]
+---
+</code></pre></div></div>
+
+<h1 id="getting-started-with-python-on-windows">Getting Started with Python on Windows</h1>
+
+<p>Reading python how-to guides, blogs and even tweets often gives the illusion that all things python take place entirely on Linux and Mac OS.  I’m on windows 99% of the time when using python and happy to report it works great. There is a bit of a lingering stigma regarding python on windows because there was a time when getting python installed and setup on a windows machine was a quite a hassle. Those days are over. In fact, there are more windows users than mac users according to the <a href="https://www.jetbrains.com/2019">JetBrains</a> survey of 24k python users:</p>
+
+<p><img src="images\python_platform.png" alt="image" /></p>
+
+<p>Good news, that is absolutely no longer the case. However, I do think getting started with Python on windows can be a bit confusing. The goal of this post is to give a brief, but opinionated summary of how to go from never having touched python to running code in a jupyter notebook ASAP.</p>
+
+<h2 id="where-to-get-python">Where to get Python</h2>
+
+<p>Google something along the lines of “install python windows” and you’ll get python.org, closely followed by realpython.com and then a Microsoft page suggesting a python download from the Microsoft Appstore. Instead of these options, seek out <a href="https://www.anaconda.com/products/individual">Anaconda</a>. This is a cross-platform solution to getting python installed and running with ease.</p>
+
+<p>The Anaconda distribution includes:</p>
+
+<ul>
+  <li>The latest version of python (create an environment for other versions needed - more on that to come)</li>
+  <li><a href="https://docs.conda.io/projects/conda/en/latest/index.html"><code class="language-plaintext highlighter-rouge">conda</code> command line tool</a></li>
+  <li><a href="https://docs.anaconda.com/anaconda/packages/py3.8_win-64/">A substantial set of pre-installed packages</a> (particularly useful for scientific computing or data science)</li>
+  <li><a href="https://docs.anaconda.com/anaconda/navigator/">Anaconda Navigator</a> (for those that prefer a GUI to launch python based tools)</li>
+</ul>
+
+<blockquote>
+  <p>Note: that if you desire a lighter weight version of Anaconda without the pre-installed packages consider <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a></p>
+</blockquote>
+
+<h2 id="starting-jupyter">Starting Jupyter</h2>
+
+<p><a href="https://jupyter.org/">Jupyter Notebooks and Jupyter Lab</a> are an approachable way to get started writing some code for beginners, as well as a fantastic way to combine data visualization with text and blocks of code for more experienced users.</p>
+
+<p>To get started either launch anaconda navigator from the start menu, or open a command line terminal, navigate to your working directory and open by either <code class="language-plaintext highlighter-rouge">jupyter notebook</code>or <code class="language-plaintext highlighter-rouge">jupyter lab</code>.</p>
+
+<blockquote>
+  <p>For some the command line terminal is unfamiliar or intimidating - instead jupyter notebook or lab can be launched from the file explorer with the same command (<code class="language-plaintext highlighter-rouge">juptyer notebook</code> or <code class="language-plaintext highlighter-rouge">jupter lab</code>) entered in the address bar:</p>
+
+  <p><img src="images\explorer.png" alt="image" style="zoom:50%;" /></p>
+
+</blockquote>
+
+<h2 id="virtual-environments-with-">Virtual Environments with <img src="C:\code-dev\geostats.dev\WIP\md\images\1280px-Conda_logo.svg.png" alt="image" style="zoom:10%;" /></h2>
+
+<p>A virtual environment can be thought of as an isolated install of python with a set of packages separate from the system (or user) -wide install. A virtual environment provides the freedom to work on projects that require a different version of python, or necessitate package(s) of different versions despite the latest and greatest that was installed with the Anaconda download. Additionally, a virtual environment can be replicated in another location or on another machine ensuring the ability to run your code wherever its needed.</p>
+
+<h3 id="environment-setup">Environment Setup</h3>
+
+<p>Creating a new environment is simple</p>
+
+<p><code class="language-plaintext highlighter-rouge">conda env create -n mynewenv</code> (replacing mynewenv with a more appropriate name).</p>
+
+<p>Anytime you want to use this environment, activate it</p>
+
+<p><code class="language-plaintext highlighter-rouge">conda activate mynewenv</code></p>
+
+<p>Once activated, anytime you call <code class="language-plaintext highlighter-rouge">python</code> or it will call the version specific to that environment, isolated from the global install.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> Using Jupyter (Notebook or Lab) within a Conda Environment requires an extra step.</p>
+
+  <p>If you want to use your conda environment in a jupyter notebook :</p>
+
+  <p><code class="language-plaintext highlighter-rouge">conda install ipykernel nb_conda_kernels</code></p>
+
+  <ul>
+    <li><strong>ipykernel</strong> provides everything you need to run jupyter from your new environment</li>
+    <li><strong>nb_conda_kernels</strong> provides the added bonus of being able to access other conda environments on your system from within jupyter</li>
+  </ul>
+</blockquote>
+
+<h3 id="copying-an-environment">Copying an Environment</h3>
+
+<p>Ultimately,  you’ll want to share your code with a friend or colleague to replicate some python workflow on a new machine or new data elsewhere. Using a Virtual Environment makes this easy. To replicate an environment, simply record all packages being used and their version number.  To clone an environment on the same machine:</p>
+
+<p><code class="language-plaintext highlighter-rouge">conda create --name myenvclone --clone myoldenv</code></p>
+
+<p>Conda also provides a convenient way to export all the pertinent information to a YAML file. From within the environment you’d like to copy:</p>
+
+<p><code class="language-plaintext highlighter-rouge">conda env export &gt; environment.yml</code></p>
+
+<p>Now, take this <code class="language-plaintext highlighter-rouge">environment.yml</code> and recreate that exact same environment on a different machine:</p>
+
+<p><code class="language-plaintext highlighter-rouge">conda env create -f environment.yml</code></p>
+
+<blockquote>
+  <p><strong>Note:</strong> The YAML approach for saving environment information does not replace the standard <code class="language-plaintext highlighter-rouge">requirements.txt</code> that is common with <code class="language-plaintext highlighter-rouge">pip</code>. Instead, the conda approach is best suited for exactly the process described above: cloning an environment. Same name, all the same packages etc. <code class="language-plaintext highlighter-rouge">requirements.txt</code> is best suited for a list dependencies required for some package, stopping short of creating an entire environment.</p>
+</blockquote>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Python works great on windows, don’t let anyone tell you otherwise. If you’re working on windows, especially in the realm of scientific computer or data science, Anaconda is highly recommended. Once you’ve got Anaconda set up and are comfortable with the basics, consider working a virtual environment for most things you’re doing. Does absolutely every bit of code need its own environment, definitely not but for any substantial project its highly recommended.</p>
