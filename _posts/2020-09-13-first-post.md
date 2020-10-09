@@ -1,3 +1,9 @@
+---
+title: "First Post"
+categories: [Python, Geoscience, About Me]
+---
+
+
 # Why? 
 In the last few years I've slowly started a list of things that were interesting, challenging or particularly useful that I've encountered working with python. The mental list turned into a written list and now a blog for a few reasons.
 1. Its an opportunity to write down some of these tid-bits so I don't forget them and have a reference next time something similar comes up.
