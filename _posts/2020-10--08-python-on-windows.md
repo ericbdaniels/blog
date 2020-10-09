@@ -2,7 +2,7 @@
 
 Reading python how-to guides, blogs and even tweets often gives the illusion that all things python take place entirely on Linux and Mac OS.  I'm on windows 99% of the time when using python and happy to report it works great. There is a bit of a lingering stigma regarding python on windows because there was a time when getting python installed and setup on a windows machine was a quite a hassle. Those days are over. In fact, there are more windows users than mac users according to the [JetBrains](https://www.jetbrains.com/2019) survey of 24k python users:
 
-![image](C:\code-dev\geostats.dev\WIP\md\images\python_platform.png)
+![image](images\python_platform.png)
 
 
 
@@ -29,11 +29,13 @@ To get started either launch anaconda navigator from the start menu, or open a c
 
 > For some the command line terminal is unfamiliar or intimidating - instead jupyter notebook or lab can be launched from the file explorer with the same command (`juptyer notebook` or `jupter lab`) entered in the address bar:
 >
-> <img src="C:\code-dev\geostats.dev\WIP\md\images\explorer.png" alt="image" style="zoom:50%;" />
+> <img src="images\explorer.png" alt="image" style="zoom:50%;" />
+>
+> 
 
 
 
-## Virtual Environments
+## Virtual Environments with <img src="C:\code-dev\geostats.dev\WIP\md\images\1280px-Conda_logo.svg.png" alt="image" style="zoom:10%;" />
 
 A virtual environment can be thought of as an isolated install of python with a set of packages separate from the system (or user) -wide install. A virtual environment provides the freedom to work on projects that require a different version of python, or necessitate package(s) of different versions despite the latest and greatest that was installed with the Anaconda download. Additionally, a virtual environment can be replicated in another location or on another machine ensuring the ability to run your code wherever its needed.
 
