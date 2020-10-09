@@ -45,7 +45,7 @@ To get started either launch anaconda navigator from the start menu, or open a c
 
 ## Virtual Environments with <img src="{{ site.baseurl }}/images/1280px-Conda_logo.svg.png" alt="image" style="width:20%; display:inline" />
 
-A virtual environment can be thought of as an isolated install of python with a set of packages separate from the system (or user) -wide install. A virtual environment provides the freedom to work on projects that require a different version of python, or necessitate package(s) of different versions despite the latest and greatest that was installed with the Anaconda download. Additionally, a virtual environment can be replicated in another location or on another machine ensuring the ability to run your code wherever its needed.
+A virtual environment can be thought of as an isolated install of python with a set of packages separate from the system (or user) -wide install. A virtual environment provides the freedom to work on projects that require a different version of python, or necessitate package(s) of different versions despite the latest and greatest that was installed with the Anaconda download. Additionally, a virtual environment can be replicated in another location or on another machine ensuring the ability to run your code wherever its needed. Shared below are some common conda commands for creating/using/cloning environments. If you need more info the [conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) is excellent.
 
 ### Environment Setup
 
@@ -88,4 +88,4 @@ Now, take this `environment.yml` and recreate that exact same environment on a d
 
 # Conclusion
 
-Python works great on windows, don't let anyone tell you otherwise. If you're working on windows, especially in the realm of scientific computer or data science, Anaconda is highly recommended. Once you've got Anaconda set up and are comfortable with the basics, consider working a virtual environment for most things you're doing. Does absolutely every bit of code need its own environment, definitely not but for any substantial project its highly recommended.
+Python works great on windows, don't let anyone tell you otherwise. If you're working on windows, especially in the realm of scientific computing or data science, Anaconda is highly recommended. Once you've got Anaconda set up and are comfortable with the basics, consider working a virtual environment for most things you're doing. Does absolutely every bit of code need its own environment, definitely not but for any substantial project its highly recommended.
