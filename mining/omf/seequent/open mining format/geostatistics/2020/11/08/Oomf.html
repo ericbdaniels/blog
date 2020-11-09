@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Obvious Open Mining Format (OOMF) | geostats.dev</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Obvious Open Mining Format (OOMF)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Work In Progress - Open Mining Format for fumans" />
+<meta property="og:description" content="Work In Progress - Open Mining Format for fumans" />
+<link rel="canonical" href="geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html" />
+<meta property="og:url" content="geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html" />
+<meta property="og:site_name" content="geostats.dev" />
+<meta property="og:image" content="geostats.dev/images/some_folder/your_image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-08T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html","@type":"BlogPosting","headline":"Obvious Open Mining Format (OOMF)","dateModified":"2020-11-08T00:00:00-06:00","datePublished":"2020-11-08T00:00:00-06:00","image":"geostats.dev/images/some_folder/your_image.png","mainEntityOfPage":{"@type":"WebPage","@id":"geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html"},"description":"Work In Progress - Open Mining Format for fumans","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="geostats.dev/feed.xml" title="geostats.dev" /><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">geostats.dev</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/resources/">Resources</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Obvious Open Mining Format (OOMF)</h1><p class="page-description">Work In Progress - Open Mining Format for fumans</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-11-08T00:00:00-06:00" itemprop="datePublished">
+        Nov 8, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#Mining">Mining</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#OMF">OMF</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#Seequent">Seequent</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#Open Mining Format">Open Mining Format</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#Geostatistics">Geostatistics</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/ericbdaniels/blog/tree/master/_notebooks/2020-11-08-Oomf.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/ericbdaniels/blog/master?filepath=_notebooks%2F2020-11-08-Oomf.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/ericbdaniels/blog/blob/master/_notebooks/2020-11-08-Oomf.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-11-08-Oomf.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Open Mining Format (OMF) is a thoughtful proposal from the Global Mining Guidlines Group (GMG), suggesting a single data format for use in multiple mining software packages. This idea has been slow to gain support from some of the big players in this space. At this point the sole supporter of this concept (to my knowledge) is Seequent, the makers of Leapfrog3D software.  The use of multuiple commercial softwares or open source tools is becoming the norm for complex workflows focused on resource modeling. This necessiates the the ability to get data into and out-of commercial software packages. OMF is an attempt at this, unfortunately the oficial python tools for OMF are a bit clunky.</p>
+<p><a href="https://github.com/ericbdaniels/Oomf">Obvious Open Mining Format aka OOMF</a> is an attempt to make working with the Open Mining Format more accessible by a more pythonic API. This is a work in progress and it should be noted that GMG already has OMF 2.0 in the works which will likely come with some breaking changes. The aim of OOMF is based on my own experience where a common workflow involves extracting information from and OMF file and manipulating it using some GSLIB or Python based tools and saving the results back to an OMF file. All of this can be done using the <a href="https://omf.readthedocs.io/en/latest/index.html">OMF package</a>. A quick read of the docs may leave you wanting a simpler approach.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Aims-of-OOMF">Aims of OOMF<a class="anchor-link" href="#Aims-of-OOMF"> </a></h2><ol>
+<li>Provide a summary of OMF file contents.</li>
+<li>Allow user access data saved within the OMF file by name.</li>
+<li>Export to other common formats (CSV, VTK, GSLIB)</li>
+<li>Easily create OMF files from existing data in CSV, VTK or GLIB formats.</li>
+<li>Provide basic tools for visualization.</li>
+</ol>
+<blockquote><p>The examples below cover points 1 through 3. 4 and 5 need a bit more work when time allows.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-usage">Example usage<a class="anchor-link" href="#Example-usage"> </a></h2><p>To demonstrate the purpose and use of OMF - consider the basic workflow of loading and exisiting OMF file, summarizing the contents, and exporting to another file format.</p>
+<h3 id="Standard-OMF-approach">Standard OMF approach<a class="anchor-link" href="#Standard-OMF-approach"> </a></h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">omf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># First read the file </span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">omf</span><span class="o">.</span><span class="n">OMFReader</span><span class="p">(</span><span class="s1">&#39;./data/test_file.omf&#39;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">get_project</span><span class="p">()</span>
+
+<span class="c1"># Now see whats in the file - for each element print the name, some basic info and the names of all associated data attributes</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Element Name: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">, Origin: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">origin</span><span class="si">}</span><span class="s1">, Size: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">num_cells</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> Attribute Name: </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Element Name: collar, Origin: [0. 0. 0.], Size: 55
+	 Attribute Name: holeid
+Element Name: wolfpass_WP_assay, Origin: [0. 0. 0.], Size: 8583
+	 Attribute Name: CU_pct
+	 Attribute Name: DENSITY
+	 Attribute Name: AG_gpt
+	 Attribute Name: AU_gpt
+	 Attribute Name: RECOV
+	 Attribute Name: S_pct
+	 Attribute Name: MO_ppm
+	 Attribute Name: AS_ppm
+	 Attribute Name: Final_cut
+	 Attribute Name: holeid
+Element Name: Topography, Origin: [0. 0. 0.], Size: 65936
+	 Attribute Name: Elevation
+Element Name: Basement, Origin: [0. 0. 0.], Size: 87702
+Element Name: Early Diorite, Origin: [0. 0. 0.], Size: 79046
+Element Name: Intermineral diorite, Origin: [0. 0. 0.], Size: 112216
+Element Name: Dacite, Origin: [0. 0. 0.], Size: 39768
+Element Name: Cover, Origin: [0. 0. 0.], Size: 102904
+Element Name: Block Model, Origin: [444700. 492800.   2330.], Size: 1689600
+	 Attribute Name: CU_pct
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1">#now get the data itself</span>
+<span class="n">assay_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">:</span><span class="n">d</span><span class="o">.</span><span class="n">array</span><span class="p">[:]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">data</span><span class="p">})</span>
+
+<span class="n">assay_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CU_pct</th>
+      <th>DENSITY</th>
+      <th>AG_gpt</th>
+      <th>AU_gpt</th>
+      <th>RECOV</th>
+      <th>S_pct</th>
+      <th>MO_ppm</th>
+      <th>AS_ppm</th>
+      <th>Final_cut</th>
+      <th>holeid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.79</td>
+      <td>NaN</td>
+      <td>6.35</td>
+      <td>1.75</td>
+      <td>0.5</td>
+      <td>-0.01</td>
+      <td>10.0</td>
+      <td>26.3</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.83</td>
+      <td>NaN</td>
+      <td>5.20</td>
+      <td>1.73</td>
+      <td>1.3</td>
+      <td>-0.01</td>
+      <td>12.2</td>
+      <td>31.0</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.84</td>
+      <td>NaN</td>
+      <td>5.75</td>
+      <td>6.00</td>
+      <td>1.8</td>
+      <td>-0.01</td>
+      <td>24.8</td>
+      <td>32.5</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.83</td>
+      <td>2.32</td>
+      <td>2.85</td>
+      <td>2.56</td>
+      <td>1.8</td>
+      <td>0.20</td>
+      <td>15.7</td>
+      <td>13.9</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.97</td>
+      <td>2.98</td>
+      <td>2.90</td>
+      <td>1.53</td>
+      <td>2.0</td>
+      <td>0.50</td>
+      <td>14.8</td>
+      <td>15.5</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>The OMF package works just fine, open the file get the data etc - no problem. Its just not inutitive because the user must access each element and attribute by its index in as list (or by its UUID which is even less user friendly in my opinion).</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="OOMF-approach">OOMF approach<a class="anchor-link" href="#OOMF-approach"> </a></h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">oomf</span> 
+
+<span class="c1"># read the file and summarize contents</span>
+<span class="n">prj</span> <span class="o">=</span> <span class="n">oomf</span><span class="o">.</span><span class="n">elements</span><span class="o">.</span><span class="n">Project</span><span class="p">(</span><span class="s2">&quot;./data/test_file.omf&quot;</span><span class="p">)</span>
+<span class="n">prj</span><span class="o">.</span><span class="n">summarize</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #000080">╭────────────────────────────────── OMFProject: Wolfpass ───────────────────────────────────╮</span>
+<span style="color: #000080">│</span>        <span style="color: #808000; font-style: italic">author</span> = <span style="color: #008000">''</span>                                                                        <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>          <span style="color: #808000; font-style: italic">date</span> = <span style="color: #800080; font-style: italic">None</span>                                                                      <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>  <span style="color: #808000; font-style: italic">date_created</span> = datetime.datetime<span style="font-weight: bold">(</span><span style="color: #000080; font-weight: bold">2017</span>, <span style="color: #000080; font-weight: bold">2</span>, <span style="color: #000080; font-weight: bold">27</span>, <span style="color: #000080; font-weight: bold">0</span>, <span style="color: #000080; font-weight: bold">21</span>, <span style="color: #000080; font-weight: bold">32</span><span style="font-weight: bold">)</span>                                 <span style="color: #000080">│</span>
+<span style="color: #000080">│</span> <span style="color: #808000; font-style: italic">date_modified</span> = datetime.datetime<span style="font-weight: bold">(</span><span style="color: #000080; font-weight: bold">2017</span>, <span style="color: #000080; font-weight: bold">8</span>, <span style="color: #000080; font-weight: bold">29</span>, <span style="color: #000080; font-weight: bold">18</span>, <span style="color: #000080; font-weight: bold">25</span>, <span style="color: #000080; font-weight: bold">47</span><span style="font-weight: bold">)</span>                                <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>   <span style="color: #808000; font-style: italic">description</span> = <span style="color: #008000">'OMF Wolfpass model'</span>                                                      <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>      <span style="color: #808000; font-style: italic">elements</span> = <span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">DotDict</span><span style="font-weight: bold">&gt;</span>:                                                                <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         collar:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: collar, Type: point<span style="font-weight: bold">)</span>,                 <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         wolfpass_WP_assay:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: wolfpass_WP_assay, Type:   <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                 line<span style="font-weight: bold">)</span>,                                                                    <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         Topography:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: Topography, Type: surface<span style="font-weight: bold">)</span>,       <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         Basement:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: Basement, Type: surface<span style="font-weight: bold">)</span>,           <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         Early_Diorite:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: Early Diorite, Type: surface<span style="font-weight: bold">)</span>, <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         Intermineral_diorite:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: Intermineral diorite,   <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                 Type: surface<span style="font-weight: bold">)</span>,                                                           <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         Dacite:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: Dacite, Type: surface<span style="font-weight: bold">)</span>,               <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         Cover:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: Cover, Type: surface<span style="font-weight: bold">)</span>,                 <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>                         Block_Model:<span style="font-weight: bold">&lt;</span><span style="color: #ff00ff; font-weight: bold">OOMFElement</span><span style="font-weight: bold">&gt;</span> <span style="font-weight: bold">(</span>Name: Block Model, Type: volume<span style="font-weight: bold">)</span>,      <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>          <span style="color: #808000; font-style: italic">name</span> = <span style="color: #008000">'Wolfpass'</span>                                                                <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>        <span style="color: #808000; font-style: italic">origin</span> = Vector3<span style="font-weight: bold">([</span><span style="color: #000080; font-weight: bold">0</span>., <span style="color: #000080; font-weight: bold">0</span>., <span style="color: #000080; font-weight: bold">0</span>.<span style="font-weight: bold">])</span>                                                     <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>      <span style="color: #808000; font-style: italic">revision</span> = <span style="color: #008000">''</span>                                                                        <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>           <span style="color: #808000; font-style: italic">uid</span> = UUID<span style="font-weight: bold">(</span><span style="color: #008000">'b3a1eb11-d893-4e15-9b4d-6b7fdd4b35da'</span><span style="font-weight: bold">)</span>                              <span style="color: #000080">│</span>
+<span style="color: #000080">│</span>         <span style="color: #808000; font-style: italic">units</span> = <span style="color: #008000">''</span>                                                                        <span style="color: #000080">│</span>
+<span style="color: #000080">╰───────────────────────────────────────────────────────────────────────────────────────────╯</span>
+</pre>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">assay_df</span> <span class="o">=</span> <span class="n">prj</span><span class="o">.</span><span class="n">elements</span><span class="o">.</span><span class="n">wolfpass_WP_assay</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">assay_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>CU_pct</th>
+      <th>DENSITY</th>
+      <th>AG_gpt</th>
+      <th>AU_gpt</th>
+      <th>RECOV</th>
+      <th>S_pct</th>
+      <th>MO_ppm</th>
+      <th>AS_ppm</th>
+      <th>Final_cut</th>
+      <th>holeid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>445198.219000</td>
+      <td>494110.594000</td>
+      <td>3057.757537</td>
+      <td>0.79</td>
+      <td>NaN</td>
+      <td>6.35</td>
+      <td>1.75</td>
+      <td>0.5</td>
+      <td>-0.01</td>
+      <td>10.0</td>
+      <td>26.3</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>445199.504526</td>
+      <td>494110.582781</td>
+      <td>3056.225448</td>
+      <td>0.83</td>
+      <td>NaN</td>
+      <td>5.20</td>
+      <td>1.73</td>
+      <td>1.3</td>
+      <td>-0.01</td>
+      <td>12.2</td>
+      <td>31.0</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>445200.790053</td>
+      <td>494110.571563</td>
+      <td>3054.693359</td>
+      <td>0.84</td>
+      <td>NaN</td>
+      <td>5.75</td>
+      <td>6.00</td>
+      <td>1.8</td>
+      <td>-0.01</td>
+      <td>24.8</td>
+      <td>32.5</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>445202.075579</td>
+      <td>494110.560344</td>
+      <td>3053.161270</td>
+      <td>0.83</td>
+      <td>2.32</td>
+      <td>2.85</td>
+      <td>2.56</td>
+      <td>1.8</td>
+      <td>0.20</td>
+      <td>15.7</td>
+      <td>13.9</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>445203.361105</td>
+      <td>494110.549126</td>
+      <td>3051.629181</td>
+      <td>0.97</td>
+      <td>2.98</td>
+      <td>2.90</td>
+      <td>1.53</td>
+      <td>2.0</td>
+      <td>0.50</td>
+      <td>14.8</td>
+      <td>15.5</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The nice summary above comes from <code>rich</code> which is an fantastic python package which allows for adding colored text, tables, summaries to any text output.</li>
+<li>Notice that any element is accessible by name, and any attribute associated with that object is also accessed by name: <code>prj.elements.wolfpass_WP_assay.CU_pct</code>, and to get the data: <code>prj.elements.wolfpass_WP_assay.CU_pct[:]</code></li>
+<li>additionally, the coordinates are added to the dataframe by default. If using the stand OMF package coordinates exist separate from attributes.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Supported-File-Formats">Supported File Formats<a class="anchor-link" href="#Supported-File-Formats"> </a></h3><p>At this point export functions for CSV, VTK and GSLIB file formats are provided in addition to the pandas integration.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prj</span><span class="o">.</span><span class="n">elements</span><span class="o">.</span><span class="n">wolfpass_WP_assay</span><span class="o">.</span><span class="n">to_gslib</span><span class="p">(</span><span class="s2">&quot;./data/gslib_export.dat&quot;</span><span class="p">)</span>
+
+<span class="c1"># to csv </span>
+<span class="n">prj</span><span class="o">.</span><span class="n">elements</span><span class="o">.</span><span class="n">wolfpass_WP_assay</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;./data/csv_export.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># to vtk </span>
+<span class="n">prj</span><span class="o">.</span><span class="n">elements</span><span class="o">.</span><span class="n">wolfpass_WP_assay</span><span class="o">.</span><span class="n">to_vtk</span><span class="p">(</span><span class="s2">&quot;./data/vtk_export.vtk&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><div class="flash">
+    <svg class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong>The <code>to_gslib</code> and <code>to_csv</code> exports rely on pandas. This can be problematic for large datasets where loading the entire dataset into a pandas dataframe can either be particularly slow or lead to memory issues.
+</div></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion"> </a></h2><p>If you use OMF files as part of your resource modeling workflow, hopefully this little tool will make life a bit easier. Its not perfect, there are tests to add, features to include, code to refactor but for now its what I had time for. In the future, I'd like to include an easy way to convert a group of GSLIB files or CSVs and create and OMF file. Additionally a 3D viewer would be nice. In the meantime, I'd welcome any contributions, comments etc.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="ericbdaniels/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Python code snippets, thoughts on Geostatistics and lessons learned the hard way.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/ericbdaniels" title="ericbdaniels"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/__getostats__" title="__getostats__"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
