@@ -1,4 +1,136 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="geostats.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="geostats.dev/" rel="alternate" type="text/html" /><updated>2020-11-19T21:30:07-06:00</updated><id>geostats.dev/feed.xml</id><title type="html">geostats.dev</title><subtitle>Python code snippets, thoughts on Geostatistics and lessons learned the hard way.</subtitle><entry><title type="html">Obvious Open Mining Format (OOMF)</title><link href="geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html" rel="alternate" type="text/html" title="Obvious Open Mining Format (OOMF)" /><published>2020-11-08T00:00:00-06:00</published><updated>2020-11-08T00:00:00-06:00</updated><id>geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf</id><content type="html" xml:base="geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="geostats.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="geostats.dev/" rel="alternate" type="text/html" /><updated>2020-11-26T16:50:08-06:00</updated><id>geostats.dev/feed.xml</id><title type="html">geostats.dev</title><subtitle>Python code snippets, thoughts on Geostatistics and lessons learned the hard way.</subtitle><entry><title type="html">Better Dashboards with Dash</title><link href="geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/2020/11/26/dash-post.html" rel="alternate" type="text/html" title="Better Dashboards with Dash" /><published>2020-11-26T00:00:00-06:00</published><updated>2020-11-26T00:00:00-06:00</updated><id>geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/2020/11/26/dash-post</id><content type="html" xml:base="geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/2020/11/26/dash-post.html">&lt;h1 id=&quot;tips-for-creating-dashboards-with-dash&quot;&gt;Tips for Creating Dashboards with Dash&lt;/h1&gt;
+
+&lt;p&gt;Presenting data visualizations via a dashboard is a great way to communicate insights from data and provide some tools for decision making. There are many many different tools both commercial and open source available for dashboarding, one of my favorites in the open source category is Dash. Dash is free (though there is an enterprise version) and makes it possible to host a series of plotly charts, tables, visualizations on a flask based webapp [almost] exclusively using python.&lt;/p&gt;
+
+&lt;h2 id=&quot;start-with-better-plots&quot;&gt;Start With Better Plots&lt;/h2&gt;
+
+&lt;p&gt;The first few items on this list aren’t specifically related to dash, but plotly. Better looking plots yield a better looking dashboard. The details matter, and like most plotting packages the defaults rarely fit your needs. The following are a few items from the plotly docs worth noting.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: for all the plotly examples assume &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import plotly.graph_objs as go&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;themes--templates&quot;&gt;Themes &amp;amp; Templates&lt;/h3&gt;
+
+&lt;p&gt;If the default colors and theme from plotly don’t fit your your desired color palette there are a handful of pre-configured themes. Most of the time these templates are a good starting point and a few adjustments to axes, colors etc will suffice. If thats not enough a custom template can be created and saved a json file and set to the default. &lt;a href=&quot;https://plotly.com/python/templates/&quot;&gt;The plotly docs&lt;/a&gt; give a good walk through of this feature.&lt;/p&gt;
+
+&lt;h3 id=&quot;efficiently-instantiate-figures-using-magic-underscore-notation&quot;&gt;Efficiently Instantiate Figures Using Magic Underscore Notation&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout&lt;/code&gt; controls most aesthetic plot details such as labels, axes ranges, etc. In many cases this leads to a heavily nested statement to instantiate the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;go.Figure&lt;/code&gt;. The magic underscore notation makes accessing all of these details easier and more efficient. Here’s an example, with and without the magic underscore approach used to set the template and axes labels.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Without Underscore Notation:&lt;/p&gt;
+
+  &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;f = go.figure(layout=dict(template=&quot;none&quot;, xaxis=dict(title_text=&quot;x values&quot;)))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;With Underscore Notation:&lt;/p&gt;
+
+  &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;f = go.figure(layout_template=&quot;none&quot;, layout_xaxis_title_text=&quot;x_values&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;aspect-ratio&quot;&gt;Aspect Ratio&lt;/h3&gt;
+
+&lt;p&gt;Plotly does not enforce an equal aspect ratio by default. There are times when this is important, rather than having to dig through the docs heres the syntax make it happen:&lt;/p&gt;
+
+&lt;p&gt;In 2-D Plots, set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scaleanchor&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scaleratio&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;f = go.Figure(layout_yaxis=dict(scaleanchor=&quot;x&quot;, scaleratio=1))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In 3-D the aspect ratio is controlled by the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scene&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aspectmode&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;f = go.Figure(layout_scene_aspectmode=&quot;data&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;dash&quot;&gt;Dash&lt;/h2&gt;
+
+&lt;p&gt;The second section of this post focuses on Dash. Creating a single page Dash app is quick, easy and the docs provide great examples. However, to go beyond a single page app with static data you’ll have to get a bit more creative. The following are a few of my go-to tools and strategies for building dash apps.&lt;/p&gt;
+
+&lt;p&gt;Have a look at the &lt;a href=&quot;https://github.com/ericbdaniels/dash-demo&quot;&gt;dash-demo repo&lt;/a&gt; on my github to see a very basic working example.&lt;/p&gt;
+
+&lt;h3 id=&quot;dash-bootstrap-components&quot;&gt;Dash Bootstrap Components&lt;/h3&gt;
+
+&lt;p&gt;I find web development a bit intimidating. Not only are there a lot of moving pieces but there are many ways to construct each of those pieces. Twitter bootstrap is just once css framework, but its well documented and has everything you need to build a good looking website. &lt;a href=&quot;https://dash-bootstrap-components.opensource.faculty.ai/&quot;&gt;Dash Bootstrap Components (dbc)&lt;/a&gt; brings the layout, styling and a handful of components from bootstrap to dash with minimal code. Sure, you can include the css yourself but this is just easy. Also there are a few included &lt;a href=&quot;https://www.bootstrapcdn.com/bootswatch/&quot;&gt;themes from bootswatch&lt;/a&gt; which is an easy way to change the look of your app with a single line of code.&lt;/p&gt;
+
+&lt;p&gt;If you’re unfamiliar with boostrap, the &lt;a href=&quot;https://dash-bootstrap-components.opensource.faculty.ai/docs/components/layout/&quot;&gt;layout section&lt;/a&gt; of the dbc docs gives all the overview you’ll need. Adding dbc to your project opens the ability to use any existing bootstrap classes as well. Have a look at the &lt;a href=&quot;https://getbootstrap.com/2.3.2/getting-started.html&quot;&gt;bootstrap docs&lt;/a&gt; for more info.&lt;/p&gt;
+
+&lt;h3 id=&quot;routing&quot;&gt;Routing&lt;/h3&gt;
+
+&lt;p&gt;Running multiple dash apps or even a single app with multiple pages or dynamic layouts can be a bit of hassle. In my opinion the &lt;a href=&quot;https://dash.plotly.com/urls&quot;&gt;solution provided by plotly&lt;/a&gt; is insufficient. If the app grows to more than 2 or 3 urls a rather large ugly conditional statement becomes the central switchboard dispatching the layout based on url. Mercy University Hospital has come up with a much nicer solution called &lt;a href=&quot;https://github.com/ericbdaniels/dash_router&quot;&gt;dash_router&lt;/a&gt;. This provides a flask-style decorator to handle the url routing. No, it doesn’t have ALL the features of flask, but its a handy way to manage a few different endpoints and pass a couple parameters in a dynamic url. I added a few lines of code to handle query strings as well (hence the link to my fork of the repo).&lt;/p&gt;
+
+&lt;p&gt;In the dash-demo example, this is added as separate module, &lt;a href=&quot;https://github.com/ericbdaniels/dash-demo/blob/main/router.py&quot;&gt;router.py&lt;/a&gt;. The snippet below gives two examples, first a dynamic url that includes an argument passed on the to layout function and the second uses a query string for some n parameters passed on to the layout (handled by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;**kwargs&lt;/code&gt;). In this case these layouts plot either a single distribution selected from the drop down or multiple.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@router.route(&quot;/univariate/&amp;lt;distribution_name&amp;gt;&quot;)
+def univariate_stats(distribution_name):
+    return template_layout(dcc.Graph(figure=plots.histogram(data[distribution_name])))
+
+
+@router.route(&quot;/multivariate&quot;)
+def multivariate_stats(**kwargs):
+    data_to_plot = [data[v] for k, v in kwargs.items()]
+    return template_layout(dcc.Graph(figure=plots.histogram(*data_to_plot)))
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Thanks to Mercy University Hospital for this, I’ve found this bit of code incredibly helpful in managing some larger dash apps with many pages. One item I have yet to try with this is sending a JSON payload via post to some url. Thats next on my to-do list.&lt;/p&gt;
+
+&lt;h3 id=&quot;responsive-layout&quot;&gt;Responsive Layout&lt;/h3&gt;
+
+&lt;p&gt;One of the things I like best about Dash is being able to easily transfer plotly charts I’ve created in Jupyter Notebook/Lab and put them on a dashboard by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dcc.Graph&lt;/code&gt;. In general this is painless and works well, but it can feel clunky without a few adjustments to make the layout responsive.&lt;/p&gt;
+
+&lt;p&gt;There are a few ways to do this but here is my preference:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Use Dash Bootstrap Component and be sure your layout is encapsulated by a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dbc.Container&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fluid=True&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Be sure any &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dcc.Graph&lt;/code&gt; component is in a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dbc.Col&lt;/code&gt;. By doing this the default behavior is for the plot to automatically resize in the horizontal direction based on the viewport (aka browser window).&lt;/li&gt;
+  &lt;li&gt;For plots to resize vertically, use viewport units to define the height. For a plot that takes up 50% of the viewport screen: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;figure=go.Figure(layout_height='50vh')&lt;/code&gt;. (This can also be used for width, but I prefer to let the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dbc.Col&lt;/code&gt; handle that by setting the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;width&lt;/code&gt; argument there.)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: If your plot has &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout_height&lt;/code&gt; and/or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout_width&lt;/code&gt; defined by pixels (passing an integer to these keywords assumes pixels) the plot will not resize correctly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It should also be mentioned that if you do not desire responsive plots &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;responsive=False&lt;/code&gt; can be set in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dcc.Graph&lt;/code&gt; component.&lt;/p&gt;
+
+&lt;h3 id=&quot;remove-the-plotly-logo&quot;&gt;Remove the Plotly Logo&lt;/h3&gt;
+
+&lt;p&gt;Another quick note on plots. If you’d like to strip the plotly logo off the tool bar of your plots set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;displaylogo=False&lt;/code&gt;. Heres a histogram plotting example from the dash-demo repo:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dcc.Graph(figure=plots.histogram(data[distribution_name]),
+            style={&quot;height&quot;: &quot;80vh&quot;},
+            config={
+                &quot;displaylogo&quot;: False,
+            },
+        )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;callback-triggers&quot;&gt;Callback Triggers&lt;/h3&gt;
+
+&lt;p&gt;Callbacks become central to any interactive dashboard made with Dash. A single callback yields a single html object, it is not possible to have multiple callbacks that control the same object. To get around this, it can be helpful to have a single callback, with multiple inputs and track which input is triggered. Based on the input triggered, different logic or actions can be applied to the resulting object.&lt;/p&gt;
+
+&lt;p&gt;Here is the key: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trigger = dash.callback_context.triggered&lt;/code&gt;. Inside of your call back function this trigger can tell you which input was changed and its new value.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@app.callback(
+    Output(&quot;my-output-div&quot;,&quot;children&quot;),
+    [Input(&quot;input_a&quot;, &quot;Value), Input(&quot;input_b&quot;,&quot;value&quot;)]
+)
+def multiple_input_actions(value_a, value_b):
+    trigger = dash.callback_context.triggered
+    if trigger[0][&quot;propid&quot;] == &quot;input_a&quot;:
+        # do something particular for input_a here
+        return &quot;input_a triggered callback&quot;
+    else:
+        # do something else here for input_b
+        return &quot;input_b triggered callback&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Dash is great. There are a handful of alternatives (streamlit, panel, bokeh etc) they all have their place too, but I highly recommend dash if you need a professional looking dashboard but want to stop short of building a complete flask app. The above tips, snippets and strategies are things I use regularly and hopefully they’ll be helpful for others. If so, please let me know. Or, if you’ve got a better approach I’d love to hear that too. For a more complete example take a look at the &lt;a href=&quot;https://github.com/ericbdaniels/dash-demo&quot;&gt;dash-demo repo&lt;/a&gt; which includes examples of most of the items mentioned above.&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Plotly" /><category term="Dash" /><category term="Flask" /><category term="Dash Bootstrap Components" /><summary type="html">Tips for Creating Dashboards with Dash</summary></entry><entry><title type="html">Obvious Open Mining Format (OOMF)</title><link href="geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html" rel="alternate" type="text/html" title="Obvious Open Mining Format (OOMF)" /><published>2020-11-08T00:00:00-06:00</published><updated>2020-11-08T00:00:00-06:00</updated><id>geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf</id><content type="html" xml:base="geostats.dev/mining/omf/seequent/open%20mining%20format/geostatistics/2020/11/08/Oomf.html">&lt;!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
