@@ -274,17 +274,17 @@ window.onload = wrap_img;
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">callback</span><span class="p">(</span>
     <span class="n">Output</span><span class="p">(</span><span class="s">"my-output-div"</span><span class="p">,</span><span class="s">"children"</span><span class="p">),</span>
-    <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s">"input_a"</span><span class="p">,</span> <span class="s">"Value), Input("</span><span class="n">input_b</span><span class="s">","</span><span class="n">value</span><span class="s">")]
-)
-def multiple_input_actions(value_a, value_b):
-    trigger = dash.callback_context.triggered
-    if trigger[0]["</span><span class="n">propid</span><span class="s">"] == "</span><span class="n">input_a</span><span class="s">":
-        # do something particular for input_a here
-        return "</span><span class="n">input_a</span> <span class="n">triggered</span> <span class="n">callback</span><span class="s">"
-    else:
-        # do something else here for input_b
-        return "</span><span class="n">input_b</span> <span class="n">triggered</span> <span class="n">callback</span><span class="s">"
-</span></code></pre></div></div>
+    <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s">"input_a"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">),</span> <span class="n">Input</span><span class="p">(</span><span class="s">"input_b"</span><span class="p">,</span><span class="s">"value"</span><span class="p">)]</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">multiple_input_actions</span><span class="p">(</span><span class="n">value_a</span><span class="p">,</span> <span class="n">value_b</span><span class="p">):</span>
+    <span class="n">trigger</span> <span class="o">=</span> <span class="n">dash</span><span class="p">.</span><span class="n">callback_context</span><span class="p">.</span><span class="n">triggered</span>
+    <span class="k">if</span> <span class="n">trigger</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">"propid"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"input_a"</span><span class="p">:</span>
+        <span class="c1"># do something particular for input_a here
+</span>        <span class="k">return</span> <span class="s">"input_a triggered callback"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># do something else here for input_b
+</span>        <span class="k">return</span> <span class="s">"input_b triggered callback"</span>
+</code></pre></div></div>
 
 <h2 id="conclusion">
 <a class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h2>
