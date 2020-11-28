@@ -170,16 +170,16 @@ window.onload = wrap_img;
 <blockquote>
   <p>Without Underscore Notation:</p>
 
-  <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>f = go.figure(layout=dict(template="none", xaxis=dict(title_text="x values")))
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s">"none"</span><span class="p">,</span> <span class="n">xaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s">"x values"</span><span class="p">)))</span>
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote>
   <p>With Underscore Notation:</p>
 
-  <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>f = go.figure(layout_template="none", layout_xaxis_title_text="x_values")
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">layout_template</span><span class="o">=</span><span class="s">"none"</span><span class="p">,</span> <span class="n">layout_xaxis_title_text</span><span class="o">=</span><span class="s">"x_values"</span><span class="p">)</span>
 </code></pre></div>  </div>
 </blockquote>
 
@@ -190,12 +190,12 @@ window.onload = wrap_img;
 
 <p>In 2-D Plots, set the <code class="language-plaintext highlighter-rouge">scaleanchor</code> and <code class="language-plaintext highlighter-rouge">scaleratio</code></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>f = go.Figure(layout_yaxis=dict(scaleanchor="x", scaleratio=1))
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">layout_yaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">scaleanchor</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">scaleratio</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>In 3-D the aspect ratio is controlled by the <code class="language-plaintext highlighter-rouge">scene</code> <code class="language-plaintext highlighter-rouge">aspectmode</code>.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>f = go.Figure(layout_scene_aspectmode="data")
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">layout_scene_aspectmode</span><span class="o">=</span><span class="s">"data"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="dash">
@@ -219,15 +219,15 @@ window.onload = wrap_img;
 
 <p>In the dash-demo example, this is added as separate module, <a href="https://github.com/ericbdaniels/dash-demo/blob/main/router.py">router.py</a>. The snippet below gives two examples, first a dynamic url that includes an argument passed on the to layout function and the second uses a query string for some n parameters passed on to the layout (handled by <code class="language-plaintext highlighter-rouge">**kwargs</code>). In this case these layouts plot either a single distribution selected from the drop down or multiple.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@router.route("/univariate/&lt;distribution_name&gt;")
-def univariate_stats(distribution_name):
-    return template_layout(dcc.Graph(figure=plots.histogram(data[distribution_name])))
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">router</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/univariate/&lt;distribution_name&gt;"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">univariate_stats</span><span class="p">(</span><span class="n">distribution_name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">template_layout</span><span class="p">(</span><span class="n">dcc</span><span class="p">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">figure</span><span class="o">=</span><span class="n">plots</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">distribution_name</span><span class="p">])))</span>
 
 
-@router.route("/multivariate")
-def multivariate_stats(**kwargs):
-    data_to_plot = [data[v] for k, v in kwargs.items()]
-    return template_layout(dcc.Graph(figure=plots.histogram(*data_to_plot)))
+<span class="o">@</span><span class="n">router</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/multivariate"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">multivariate_stats</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">data_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="n">template_layout</span><span class="p">(</span><span class="n">dcc</span><span class="p">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">figure</span><span class="o">=</span><span class="n">plots</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="o">*</span><span class="n">data_to_plot</span><span class="p">)))</span>
 
 </code></pre></div></div>
 
@@ -257,12 +257,12 @@ def multivariate_stats(**kwargs):
 
 <p>Another quick note on plots. If you’d like to strip the plotly logo off the tool bar of your plots set <code class="language-plaintext highlighter-rouge">displaylogo=False</code>. Heres a histogram plotting example from the dash-demo repo:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dcc.Graph(figure=plots.histogram(data[distribution_name]),
-            style={"height": "80vh"},
-            config={
-                "displaylogo": False,
-            },
-        )
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dcc</span><span class="p">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">figure</span><span class="o">=</span><span class="n">plots</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">distribution_name</span><span class="p">]),</span>
+            <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s">"height"</span><span class="p">:</span> <span class="s">"80vh"</span><span class="p">},</span>
+            <span class="n">config</span><span class="o">=</span><span class="p">{</span>
+                <span class="s">"displaylogo"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
 </code></pre></div></div>
 
 <h3 id="callback-triggers">
@@ -272,19 +272,19 @@ def multivariate_stats(**kwargs):
 
 <p>Here is the key: <code class="language-plaintext highlighter-rouge">trigger = dash.callback_context.triggered</code>. Inside of your call back function this trigger can tell you which input was changed and its new value.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@app.callback(
-    Output("my-output-div","children"),
-    [Input("input_a", "Value), Input("input_b","value")]
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">callback</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s">"my-output-div"</span><span class="p">,</span><span class="s">"children"</span><span class="p">),</span>
+    <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s">"input_a"</span><span class="p">,</span> <span class="s">"Value), Input("</span><span class="n">input_b</span><span class="s">","</span><span class="n">value</span><span class="s">")]
 )
 def multiple_input_actions(value_a, value_b):
     trigger = dash.callback_context.triggered
-    if trigger[0]["propid"] == "input_a":
+    if trigger[0]["</span><span class="n">propid</span><span class="s">"] == "</span><span class="n">input_a</span><span class="s">":
         # do something particular for input_a here
-        return "input_a triggered callback"
+        return "</span><span class="n">input_a</span> <span class="n">triggered</span> <span class="n">callback</span><span class="s">"
     else:
         # do something else here for input_b
-        return "input_b triggered callback"
-</code></pre></div></div>
+        return "</span><span class="n">input_b</span> <span class="n">triggered</span> <span class="n">callback</span><span class="s">"
+</span></code></pre></div></div>
 
 <h2 id="conclusion">
 <a class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h2>
