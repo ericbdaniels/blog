@@ -4,19 +4,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Packing a Dash App with PyFladesk and PyInstaller | geostats.dev</title>
+<title>Packaging a Dash App with PyFladesk and PyInstaller | geostats.dev</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Packing a Dash App with PyFladesk and PyInstaller" />
+<meta property="og:title" content="Packaging a Dash App with PyFladesk and PyInstaller" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Turn your Dash App into a stand alone desktop application" />
 <meta property="og:description" content="Turn your Dash App into a stand alone desktop application" />
-<link rel="canonical" href="geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packing.html" />
-<meta property="og:url" content="geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packing.html" />
+<link rel="canonical" href="geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packaging.html" />
+<meta property="og:url" content="geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packaging.html" />
 <meta property="og:site_name" content="geostats.dev" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-03-14T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packing.html","@type":"BlogPosting","headline":"Packing a Dash App with PyFladesk and PyInstaller","dateModified":"2021-03-14T00:00:00-06:00","datePublished":"2021-03-14T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packing.html"},"description":"Turn your Dash App into a stand alone desktop application","@context":"https://schema.org"}</script>
+{"url":"geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packaging.html","@type":"BlogPosting","headline":"Packaging a Dash App with PyFladesk and PyInstaller","dateModified":"2021-03-14T00:00:00-06:00","datePublished":"2021-03-14T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"geostats.dev/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packaging.html"},"description":"Turn your Dash App into a stand alone desktop application","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="geostats.dev/feed.xml" title="geostats.dev" /><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -87,7 +87,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Packing a Dash App with PyFladesk and PyInstaller</h1><p class="page-description">Turn your Dash App into a stand alone desktop application</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-03-14T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Packaging a Dash App with PyFladesk and PyInstaller</h1><p class="page-description">Turn your Dash App into a stand alone desktop application</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-03-14T00:00:00-06:00" itemprop="datePublished">
         Mar 14, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -128,7 +128,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#packing-dash-apps-into-an-executable">Packing Dash Apps into an Executable</a>
+<li class="toc-entry toc-h1"><a href="#packaging-dash-apps-into-an-executable">Packaging Dash Apps into an Executable</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#step-1-build-a-dash-app">Step 1: Build A Dash App</a></li>
 <li class="toc-entry toc-h2"><a href="#step-2-running-dash-using-qtwebengine-with-pyfladesk">Step 2: Running Dash using QtWebEngine with PyFladesk</a></li>
@@ -136,17 +136,17 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
-</ul><h1 id="packing-dash-apps-into-an-executable">
-<a class="anchor" href="#packing-dash-apps-into-an-executable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Packing Dash Apps into an Executable</h1>
+</ul><h1 id="packaging-dash-apps-into-an-executable">
+<a class="anchor" href="#packaging-dash-apps-into-an-executable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Packaging Dash Apps into an Executable</h1>
 
 <p>The first question is - why bother? This is a very valid question. Dash Apps are built for the web and best run in the browser, hosted on a server. But there are times when a stand alone app can be useful.</p>
 
-<p>Mostly I wanted to see if it is feasible  to create a small desktop GUI based tool (similar to Electron based JS software) with Dash. Turns out, its not hard - I’m sure there are some details to this that could be tuned up but the purpose of this post is to share the basic workflow for packing a dash app.</p>
+<p>Mostly I wanted to see if it is feasible  to create a small desktop GUI based tool (similar to Electron based JS software) with Dash. Turns out, its not hard - I’m sure there are some details to this that could be tuned up but the purpose of this post is to share the basic workflow for packaging a dash app.</p>
 
 <h2 id="step-1-build-a-dash-app">
 <a class="anchor" href="#step-1-build-a-dash-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1: Build A Dash App</h2>
 
-<p>Diamond Drillhole Quality-Assurance Quality-Control (DDH-QAQC) is a small dash app designed to desurvey and composite mining drill hole data as well as provide some basic data visualization for QA/QC purposes. This is a work in progress and hasn’t been optimized, as previously mentioned the main goal here was to try packing a dash app.</p>
+<p>Diamond Drillhole Quality-Assurance Quality-Control (DDH-QAQC) is a small dash app designed to desurvey and composite mining drill hole data as well as provide some basic data visualization for QA/QC purposes. This is a work in progress and hasn’t been optimized, as previously mentioned the main goal here was to try packaging a dash app.</p>
 
 <p>This App takes advantage of a couple nice Dash add-ons including <a href="https://github.com/ericbdaniels/dash_router">dash_router</a>, <a href="https://dash-bootstrap-components.opensource.faculty.ai/">Dash Bootstrap Components</a> and <a href="https://dash.plotly.com/datatable">Dash DataTable</a>.</p>
 
@@ -214,7 +214,7 @@ window.onload = wrap_img;
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packing.html" hidden></a>
+</script><a class="u-url" href="/python/plotly/dash/flask/dash%20bootstrap%20components/pyfladesk/pyinstaller/2021/03/14/dash-packaging.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
