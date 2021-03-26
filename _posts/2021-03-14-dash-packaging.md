@@ -1,5 +1,5 @@
 ---
-title: "Packing a Dash App with PyFladesk and PyInstaller"
+title: "Packaging a Dash App with PyFladesk and PyInstaller"
 description: "Turn your Dash App into a stand alone desktop application"
 layout: post
 toc: true
