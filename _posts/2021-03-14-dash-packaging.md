@@ -8,16 +8,16 @@ categories: [Python, Plotly, Dash, Flask, Dash Bootstrap Components, PyFladesk, 
 ---
 
 
-# Packing Dash Apps into an Executable
+# Packaging Dash Apps into an Executable
 
 The first question is - why bother? This is a very valid question. Dash Apps are built for the web and best run in the browser, hosted on a server. But there are times when a stand alone app can be useful.
 
-Mostly I wanted to see if it is feasible  to create a small desktop GUI based tool (similar to Electron based JS software) with Dash. Turns out, its not hard - I'm sure there are some details to this that could be tuned up but the purpose of this post is to share the basic workflow for packing a dash app.
+Mostly I wanted to see if it is feasible  to create a small desktop GUI based tool (similar to Electron based JS software) with Dash. Turns out, its not hard - I'm sure there are some details to this that could be tuned up but the purpose of this post is to share the basic workflow for packaging a dash app.
 
 
 ## Step 1: Build A Dash App
 
-Diamond Drillhole Quality-Assurance Quality-Control (DDH-QAQC) is a small dash app designed to desurvey and composite mining drill hole data as well as provide some basic data visualization for QA/QC purposes. This is a work in progress and hasn't been optimized, as previously mentioned the main goal here was to try packing a dash app.
+Diamond Drillhole Quality-Assurance Quality-Control (DDH-QAQC) is a small dash app designed to desurvey and composite mining drill hole data as well as provide some basic data visualization for QA/QC purposes. This is a work in progress and hasn't been optimized, as previously mentioned the main goal here was to try packaging a dash app.
 
 This App takes advantage of a couple nice Dash add-ons including [dash_router](https://github.com/ericbdaniels/dash_router), [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) and [Dash DataTable](https://dash.plotly.com/datatable).
 
