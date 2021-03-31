@@ -35,7 +35,7 @@ The Anaconda distribution includes:
 
 To get started either launch anaconda navigator from the start menu, or open a command line terminal, navigate to your working directory and open by either `jupyter notebook`or `jupyter lab`.
 
-> For some the command line terminal is unfamiliar or intimidating - instead jupyter notebook or lab can be launched from the file explorer with the same command (`juptyer notebook` or `jupter lab`) entered in the address bar:
+> For some the command line terminal is unfamiliar or intimidating - instead jupyter notebook or lab can be launched from the file explorer with the same command (`juptyer notebook` or `jupyter lab`) entered in the address bar:
 >
 > <img src="{{ site.baseurl }}/images/explorer.png" alt="image" style="zoom:50%;" />
 >
